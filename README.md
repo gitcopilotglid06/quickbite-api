@@ -1,6 +1,14 @@
 # Swagger ScreenShot
-![Swagger SS](image-1.png)
-![SS](image-2.png)
+Swagger API's ![Swagger API](image-1.png)
+
+Health Check ![Health Check API](image-2.png)
+
+Validation in Post API ![Validation API](image-3.png)
+
+Success Post API ![Success Post API](image-4.png)
+
+Docker File SS ![Docker File](image-5.png)
+
 
 # Repo Link
 https://github.com/gitcopilotglid06/quickbite-api
@@ -25,7 +33,7 @@ Ran all test suites.
 
 ![QuickBite API](image.png)
 
-## Show one great Copilot prompt
+# Show one great Copilot prompt
  
  Using TDD approach in our QuickBite API, implement a customer review system for menu items. Follow the existing test-first patterns used in our current test suite (MenuItem.test.js, MenuItemService.test.js, MenuItemController.test.js).
 
@@ -91,7 +99,7 @@ Ran all test suites.
 - Same Sequelize model validation structure
 
 
-## Development Summary
+# Development Summary
 
 ### Copilot-Assisted Development Experience
 

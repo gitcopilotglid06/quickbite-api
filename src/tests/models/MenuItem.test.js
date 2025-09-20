@@ -1,5 +1,4 @@
-const MenuItem = require('../../models/MenuItem');
-const { sequelize } = require('../../models');
+const { MenuItem, sequelize } = require('../../models');
 
 describe('MenuItem Model', () => {
   beforeAll(async () => {
@@ -98,9 +97,9 @@ describe('MenuItem Model', () => {
         .rejects.toThrow();
     });
 
-    it('should reject name longer than 100 characters', async () => {
+    it('should reject name longer than 255 characters', async () => {
       const invalidMenuItem = {
-        name: 'a'.repeat(101),
+        name: 'a'.repeat(256),
         price: 12.99,
         category: 'main'
       };
@@ -109,10 +108,10 @@ describe('MenuItem Model', () => {
         .rejects.toThrow();
     });
 
-    it('should reject description longer than 500 characters', async () => {
+    it('should reject description longer than 1000 characters', async () => {
       const invalidMenuItem = {
         name: 'Test Item',
-        description: 'a'.repeat(501),
+        description: 'a'.repeat(1001),
         price: 12.99,
         category: 'main'
       };

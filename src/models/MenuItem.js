@@ -12,14 +12,14 @@ const MenuItem = sequelize.define('MenuItem', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [1, 100]
+      len: [1, 255]
     }
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: true,
     validate: {
-      len: [0, 500]
+      len: [0, 1000]
     }
   },
   price: {
@@ -27,7 +27,8 @@ const MenuItem = sequelize.define('MenuItem', {
     allowNull: false,
     validate: {
       isDecimal: true,
-      min: 0.01
+      min: 0.01,
+      max: 99999.99
     }
   },
   category: {
@@ -43,17 +44,14 @@ const MenuItem = sequelize.define('MenuItem', {
     validate: {
       len: [0, 50]
     }
+  },
+  availability: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true
   }
 }, {
-  tableName: 'menu_items',
-  indexes: [
-    {
-      fields: ['category']
-    },
-    {
-      fields: ['name']
-    }
-  ]
+  tableName: 'menu_items'
 });
 
 module.exports = MenuItem;

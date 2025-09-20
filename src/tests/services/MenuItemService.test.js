@@ -1,12 +1,14 @@
 const MenuItemService = require('../../services/MenuItemService');
-const MenuItem = require('../../models/MenuItem');
-const { sequelize } = require('../../models');
+const { MenuItem, sequelize } = require('../../models');
 
 describe('MenuItemService', () => {
   beforeAll(async () => {
     await sequelize.sync({ force: true });
+    // Wait a bit for database to be ready
+    await new Promise(resolve => setTimeout(resolve, 100));
   });
 
+  // Global cleanup to ensure test isolation
   beforeEach(async () => {
     await MenuItem.destroy({ where: {} });
   });
@@ -47,6 +49,7 @@ describe('MenuItemService', () => {
 
   describe('getAllMenuItems', () => {
     beforeEach(async () => {
+      // Create test data for this specific test suite
       await MenuItem.bulkCreate([
         {
           name: 'Pizza',
@@ -90,6 +93,7 @@ describe('MenuItemService', () => {
     let testMenuItem;
 
     beforeEach(async () => {
+      // Create test data for this specific test suite
       testMenuItem = await MenuItem.create({
         name: 'Test Item',
         price: 10.99,
@@ -98,6 +102,10 @@ describe('MenuItemService', () => {
     });
 
     it('should return menu item for valid ID', async () => {
+      // Ensure the test item was created and has an ID
+      expect(testMenuItem).toBeDefined();
+      expect(testMenuItem.id).toBeDefined();
+      
       const result = await MenuItemService.getMenuItemById(testMenuItem.id);
 
       expect(result).not.toBeNull();
@@ -116,6 +124,7 @@ describe('MenuItemService', () => {
     let testMenuItem;
 
     beforeEach(async () => {
+      // Create test data for this specific test suite
       testMenuItem = await MenuItem.create({
         name: 'Original Name',
         price: 10.99,
@@ -160,6 +169,7 @@ describe('MenuItemService', () => {
     let testMenuItem;
 
     beforeEach(async () => {
+      // Create test data for this specific test suite
       testMenuItem = await MenuItem.create({
         name: 'Item to Delete',
         price: 10.99,
@@ -186,6 +196,7 @@ describe('MenuItemService', () => {
 
   describe('searchMenuItems', () => {
     beforeEach(async () => {
+      // Create test data for this specific test suite
       await MenuItem.bulkCreate([
         {
           name: 'Margherita Pizza',

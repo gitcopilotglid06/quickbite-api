@@ -1,6 +1,30 @@
 # QuickBite Food Menu Management API
 
-A secure, well-tested RESTful API for restaurant menu management built with Node.js, Express, and SQLite following Test-Driven Development (TDD) principles.
+A secure, well-teste## API Documentation
+
+Once the server is running, access the Swagger documentation at:
+`http://localhost:3001/api-docs`
+
+### Sample API Usage
+
+```bash
+# Get all menu items
+curl http://localhost:3001/api/menu-items
+
+# Create a new menu item
+curl -X POST http://localhost:3001/api/menu-items \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Margherita Pizza",
+    "description": "Classic pizza with tomato sauce, mozzarella, and fresh basil",
+    "price": 12.99,
+    "category": "main",
+    "dietaryTag": "vegetarian"
+  }'
+
+# Search menu items
+curl "http://localhost:3001/api/menu-items/search?q=pizza"
+```STful API for restaurant menu management built with Node.js, Express, and SQLite following Test-Driven Development (TDD) principles.
 
 ## Features
 
